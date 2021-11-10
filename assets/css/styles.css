@@ -2,11 +2,12 @@ html, body {
     margin: 0;
     padding: 0;
     background: transparent;
+    text-align: center;
 }
 
 #mainCanvas {
-    border:1px solid black;
-    width:512px;
-    height:480px;
+    border: 0;
+    width: 512px;
+    height: 480px;
     border-radius: 10px;
 }
