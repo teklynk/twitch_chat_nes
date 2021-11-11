@@ -104,13 +104,13 @@ client.on('chat', (channel, user, message, self) => {
         }
 
         // Mods only commands
-        if (modreset === 'true' && (user.mod || user.username === channelName)) {
+        if (modreset === 'true' && (user.mod || user.username.toLowerCase() === channelName.toLowerCase())) {
             resetGame();
         } else if (modreset === 'false') {
             resetGame();
         }
 
-        if (modgame === 'true' && (user.mod || user.username === channelName)) {
+        if (modgame === 'true' && (user.mod || user.username.toLowerCase() === channelName.toLowerCase())) {
             changeGame();
         } else if (modgame === 'false') {
             changeGame();
@@ -138,7 +138,7 @@ client.on('chat', (channel, user, message, self) => {
                 let srcURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
                 if (gameName) {
                     setTimeout(function () {
-                        window.location.href = srcURL + "?channel=" + channelName + "&size=" + size + "&rom=" + gameName + "&mod-reset=" + modreset + "&mod-game=" + modgame + "&show-messages=" + showmessages;
+                        window.location.href = srcURL + "?channel=" + channelName.toLowerCase() + "&size=" + size + "&rom=" + gameName + "&mod-reset=" + modreset + "&mod-game=" + modgame + "&show-messages=" + showmessages;
                     }, 100);
                 }
             }
