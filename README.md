@@ -5,6 +5,8 @@
 This is a "Twitch Plays" overlay that allows Twitch chat to control an NES game that is running inside OBS browser source.
 The overlay is connected to your Twitch chat and listening for specific commands like: !u, !d, !l, !r, !a, !b to control the NES game.
 
+### [Try it here](https://twitch-chat-nes.pages.dev/)
+
 ### Chat Commands
 
 - **!u** : d-pad up
