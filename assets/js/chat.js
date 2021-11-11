@@ -25,6 +25,15 @@ client.on('chat', (channel, user, message, self) => {
             }
         }
 
+        // output of user name and message
+        function showUserCommand() {
+            if (showmessages === 'true') {
+                document.getElementById('chatCommand').innerText = user.username + ': ' + message;
+            } else {
+                document.getElementById('chatCommand').innerText = "";
+            }
+        }
+
         // D-Pad controls
 
         // check if message/command length is less than 5 characters
@@ -37,6 +46,7 @@ client.on('chat', (channel, user, message, self) => {
                 setTimeout(function () {
                     releasePadButton(NesJs.Joypad.BUTTONS.RIGHT);
                 }, timeLength);
+                showUserCommand();
             }
 
             // left
@@ -46,6 +56,7 @@ client.on('chat', (channel, user, message, self) => {
                 setTimeout(function () {
                     releasePadButton(NesJs.Joypad.BUTTONS.LEFT);
                 }, timeLength);
+                showUserCommand();
             }
 
             // up
@@ -55,6 +66,7 @@ client.on('chat', (channel, user, message, self) => {
                 setTimeout(function () {
                     releasePadButton(NesJs.Joypad.BUTTONS.UP);
                 }, timeLength);
+                showUserCommand();
             }
 
             // down
@@ -64,6 +76,7 @@ client.on('chat', (channel, user, message, self) => {
                 setTimeout(function () {
                     releasePadButton(NesJs.Joypad.BUTTONS.DOWN);
                 }, timeLength);
+                showUserCommand();
             }
 
             // a
@@ -73,6 +86,7 @@ client.on('chat', (channel, user, message, self) => {
                 setTimeout(function () {
                     releasePadButton(NesJs.Joypad.BUTTONS.A);
                 }, timeLength);
+                showUserCommand();
             }
 
             // b
@@ -82,6 +96,7 @@ client.on('chat', (channel, user, message, self) => {
                 setTimeout(function () {
                     releasePadButton(NesJs.Joypad.BUTTONS.B);
                 }, timeLength);
+                showUserCommand();
             }
         }
 
@@ -143,12 +158,5 @@ client.on('chat', (channel, user, message, self) => {
                 }
             }
         }
-
-        if (showmessages === 'true') {
-            // console output of user name and message
-            document.getElementById('chatCommand').innerText = user.username + ': ' + message;
-            console.log(user.username + ': ' + message);
-        }
-
     }
 });
