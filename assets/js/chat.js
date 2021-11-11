@@ -144,7 +144,7 @@ client.on('chat', (channel, user, message, self) => {
             }
         }
 
-        if (showMessages === 'true') {
+        if (showmessages === 'true') {
             // console output of user name and message
             document.getElementById('chatCommand').innerText = user.username + ': ' + message;
             console.log(user.username + ': ' + message);
