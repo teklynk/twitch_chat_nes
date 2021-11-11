@@ -3,11 +3,24 @@ html, body {
     padding: 0;
     background: transparent;
     text-align: center;
+    font-family: Arial;
 }
 
 #mainCanvas {
     border: 0;
-    width: 512px;
+    width: 640px;
     height: 480px;
     border-radius: 10px;
+    z-index: 1;
+}
+
+#chatCommand {
+    width: 300px;
+    color: black;
+    z-index: 2;
+    text-align: center;
+    font-weight: normal;
+    font-size: large;
+    margin: auto;
+    padding: 10px;
 }

@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Twitch Chat-NES</title>
+    <link rel="stylesheet" href="assets/css/bootstrap452.min.css">
+    <link rel="stylesheet" href="assets/css/dark.min.css">
     <link rel="apple-touch-icon" sizes="57x57" href="assets/images/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="assets/images/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-icon-72x72.png">
@@ -16,13 +19,125 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <script type="text/javascript" src="assets/js/tmi.min.js"></script>
-    <script type="text/javascript" src="build/nes.min.js"></script>
-    <script type="text/javascript" src="assets/js/chat.js"></script>
-    <script type="text/javascript" src="assets/js/custom.js"></script>
-    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body onload="loadRom()">
-<canvas id="mainCanvas"></canvas>
+<style>
+    .hide {
+        display: none;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <h1 class="h3 pt-4 pl-lg-4 text-center">Twitch Chat-NES</h1>
+        </div>
+        <div class="col-2 text-center">
+            <img src="assets/images/robot.gif" style="width: 60px;" alt="">
+        </div>
+    </div>
+    <br>
+    <div class="form-label-group mb-2">
+        <label for="mainAccount">Twitch Account</label>
+        <input type="text" id="mainAccount" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="size">Homebrew NES Rom</label>
+        <select class="form-control" id="rom">
+            <option value="dushlan">Dushlan (Tetris clone)</option>
+            <option value="invasion" selected>Invasion (Space Invaders clone)</option>
+            <option value="mineshaft">Mineshaft</option>
+            <option value="mower">Mower</option>
+            <option value="pong">Pong</option>
+            <option value="tetris">Tetris</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="size">Size</label>
+        <select class="form-control" id="size">
+            <option value="320">320×240</option>
+            <option value="640" selected>640×480</option>
+            <option value="800">800×600</option>
+            <option value="1024">1024×768</option>
+            <option value="1152">1152×864</option>
+        </select>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="show-messages" checked>
+        <label class="form-check-label" for="show-messages">
+            Show chat command on overlay along with the users name.
+        </label>
+        <small class="form-text text-muted">Helpful for showing which users command is being used in the game.</small>
+    </div>
+    <br>
+    <h4>Mod settings</h4>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="mod-reset" checked>
+        <label class="form-check-label" for="mod-reset">
+            !reset
+        </label>
+        <small class="form-text text-muted">If checked, the !reset command is restricted to Mods only. If unchecked,
+            everyone is allowed to use this command.</small>
+    </div>
+    <br>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="mod-game" checked>
+        <label class="form-check-label" for="mod-game">
+            !game
+        </label>
+        <small class="form-text text-muted">If checked, the !game command is restricted to Mods only. If unchecked,
+            everyone is allowed to use this command.</small>
+    </div>
+    <hr>
+    <h4>Commands</h4>
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item">!u = d-pad up</li>
+            <li class="list-group-item">!d = d-pad down</li>
+            <li class="list-group-item">!l = d-pad left</li>
+            <li class="list-group-item">!r = d-pad right</li>
+            <li class="list-group-item">!a = A button</li>
+            <li class="list-group-item">!b = B button</li>
+            <li class="list-group-item">!start = Start</li>
+            <li class="list-group-item">!select = Select</li>
+            <li class="list-group-item">!reset = Reloads the browser window</li>
+            <li class="list-group-item">!game = Changes the game. ie: !game invasion</li>
+        </ul>
+    </div>
+    <br>
+    <div class="alert alert-info" role="alert">
+        <strong>* Pro Tip:</strong> You can add a number to the end of a command to change how long the button is
+        pressed. The max value is 10. This can help with some games that require the player to move across the screen or
+        hold down the fire button.
+        <strong>Examples: !r 4, !a 5, !d 8</strong>
+    </div>
+    <br>
+    <button class="btn btn-lg btn-success btn-block" id="generate_button" type="button">Generate Overlay Link</button>
+    <br>
+    <div id="overlaylink" class="hide"></div>
+</div>
+<script>
+    document.getElementById("generate_button").addEventListener("click", function (e) {
+        let mainAccount = document.getElementById("mainAccount").value;
+        let size = document.getElementById("size").value;
+        let rom = document.getElementById("rom").value;
+        let modreset = document.getElementById("mod-reset").checked;
+        let modgame = document.getElementById("mod-game").checked;
+        let showmessages = document.getElementById("show-messages").checked;
+
+        if (!mainAccount) {
+            alert('Twitch username is not set');
+        }
+        // build overlay url
+        if (mainAccount) {
+            let srcURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            let fullUrl = srcURL + "overlay.html?channel=" + mainAccount + "&size=" + size + "&rom=" + rom + "&mod-reset=" + modreset + "&mod-game=" + modgame + "&show-messages=" + showmessages;
+            document.getElementById("overlaylink").classList.remove("hide");
+            document.getElementById("overlaylink").innerHTML = "<p>Add this link as a browser source in OBS.<br>" +
+                "<a href='" + fullUrl + "' target='_blank'>" + fullUrl + "</a></p>";
+        }
+    });
+</script>
+<div class="text-right m-4"><a class="btn btn-link" href="https://github.com/teklynk/twitch_chat_nes" target="_blank">Github</a>
+</div>
 </body>
 </html>
