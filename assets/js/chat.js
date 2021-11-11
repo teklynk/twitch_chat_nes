@@ -37,7 +37,7 @@ client.on('chat', (channel, user, message, self) => {
         // D-Pad controls
 
         // check if message/command length is less than 5 characters
-        if (message.length <= 5) {
+        if (message.length <= 6) {
 
             // right
             if (message.startsWith("!r")) {
