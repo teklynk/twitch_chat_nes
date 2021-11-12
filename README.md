@@ -68,8 +68,8 @@ You can add this CSS to the OBS browser source and modify it for your needs.
 - Sometimes TMI.js fails to connect to Twitch chat. In which case, you will need to refresh your browser source until it
   successfully connects.
 - Not all games play the same way. Sometimes the chat commands interact with the game differently. Such as "!a" may
-  actually start the game even though the game displays "Start" on the screen. Just remember how it was playing an NES game for the first time and trying to figure out if
-  you have to press Start, Select, A, B... game controls and instructions are not consistent across NES games.
+  actually start the game even though the game displays "Start" on the screen. Just remember how it was to play an NES game for the first time and trying to figure out if
+  you need to press Start, Select, A, B... game controls and instructions are not consistent across NES games.
 - There is no way to collect stats or high scores from the game/rom. I do not think this will ever be possible. Twitch
   chat is simply playing an NES game and no more than that.
 - There is no way to save a game or load a game save. This may be something to consider if you are planning to have an
