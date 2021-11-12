@@ -35,6 +35,9 @@
         canvas.style.width = parseInt(size) + 'px';
         canvas.style.height = aspectHeight + 'px';
     }
+    // sets focus on player so that audio initializes and is not muted on start.
+    document.getElementById("mainCanvas").focus();
+    document.getElementById("mainCanvas").click();
 </script>
 </body>
 </html>

@@ -6,6 +6,10 @@ html, body {
     font-family: Arial;
 }
 
+.hide {
+    display: none;
+}
+
 #mainCanvas {
     border: 0;
     width: 640px;
