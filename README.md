@@ -64,9 +64,14 @@ You can add this CSS to the OBS browser source and modify it for your needs.
 ### Notes:
 
 - Not all NES roms will work. Some have graphical and/or audio issues and/or a very slow frame rate. Test your own ROMs
-  first.
-- Sometimes TMI.js fails to connect to Twitch. In which case, you will need to refresh your browser source until it
+  first to see how well they work in a browser.
+- Sometimes TMI.js fails to connect to Twitch chat. In which case, you will need to refresh your browser source until it
   successfully connects.
 - Not all games play the same way. Sometimes the chat commands interact with the game differently. Such as "!a" may
   actually start the game. Just remember how it was playing an NES game for the first time and trying to figure out if
   you have to press Start, Select, A, B... games controls are not consistent.
+- There is no way to collect stats or high scores from the game/rom. I do not think this will ever be possible. Twitch
+  chat is simply playing an NES game and no more than that.
+- There is no way to save a game or load a game save. This may be something to consider if you are planning to have an
+  epic 24hr "Twitch Plays" stream. If you need to restart the browser source or OBS while streaming, then the game will
+  reset.
