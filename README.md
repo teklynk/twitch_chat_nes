@@ -20,6 +20,7 @@ css, html.
 - **!a** : A button
 - **!b** : B button
 - **!start** : Start
+- **!select** : Select
 - **!game** : Changes the game. ie: !game invasion
 - **!reset** : Reloads the browser source and game.
 
