@@ -21,6 +21,7 @@ css, html.
 - **!b** : B button
 - **!start** : Start
 - **!game** : Changes the game. ie: !game invasion
+- **!reset** : Reloads the browser source and game.
 
 **Pro Tip:** You can add a number to the end of a command to change how long the button is pressed. The max value is 10.
 This can help with some games that require the player to move across the screen or hold down the fire button.
