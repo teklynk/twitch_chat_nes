@@ -11,6 +11,10 @@ css, html.
 
 ### [Try it here](https://twitch-chat-nes.pages.dev/)
 
+### Screenshots
+
+![sample1](https://github.com/teklynk/twitch_chat_nes/blob/main/screenshots/Screenshot%20from%202021-12-24%2003-08-32.png?raw=true)
+
 ### Chat Commands
 
 - **!u** : d-pad up
