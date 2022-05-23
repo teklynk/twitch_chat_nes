@@ -41,10 +41,22 @@
     </div>
     <div class="row">
         <div class="col-10">
-            <h1 class="h3 pt-4 pl-lg-4 text-center">Twitch Chat-NES</h1>
+            <h1 class="h3 pt-4 pl-lg-4 text-center invisible">Twitch Chat-NES</h1>
         </div>
         <div class="col-2 text-center">
             <img src="assets/images/robot.gif" style="width: 60px;" alt="">
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h2>Twitch Chat-NES Overlay</h2>
+            <p><img src="./assets/images/screen1.png" align="right" class="img-fluid ml-3 border">This is a "Twitch Plays" overlay that allows Twitch chat to control an NES game that is running inside a OBS browser source. The overlay is connected to your Twitch chat and listens for specific chat commands like: !u, !d, !l, !r, !a, !b to control the NES game.</p>
+            <h3>Notes:</h3>
+            <ul>
+                <li>Pro Tip: You can add a number to the end of a command to change how long the button is pressed. The max value is 10. This can help with some games that require the player to move across the screen or hold down the fire button. Examples: !r 4, !a 5, !d 8</li>
+                <li>You can interact with the OBS browser source using arrow keys, Z, X, Enter</li>
+                <li>Keep in mind that there is typically a chat delay to take into consideration.</li>
+            </ul>
         </div>
     </div>
     <br>
@@ -119,13 +131,30 @@
         </ul>
     </div>
     <br>
-    <div class="alert alert-info" role="alert">
-        <strong>* Pro Tip:</strong> You can add a number to the end of a command to change how long the button is
-        pressed. The max value is 10. This can help with some games that require the player to move across the screen or
-        hold down the fire button.
-        <strong>Examples: !r 4, !a 5, !d 8</strong>
+    <div class="form-group purple-border">
+        <label for="customCss">Custom CSS
+            <small> (Copy and paste into the OBS browser source Custom CSS section and modify as needed. <a
+                    href="https://www.w3schools.com/Css/" target="_blank">CSS Tutorial</a>)
+            </small>
+        </label>
+        <textarea class="form-control" id="customCss" rows="3" style="height: 200px;" readonly>
+#mainCanvas {
+    border: 0;
+    width: 640px;
+    height: 480px;
+    border-radius: 10px;
+}
+
+#chatCommand {
+    color: white;
+    top: 550px;
+    position: absolute;
+    left: 30px;
+    text-shadow: 1px 1px black;
+}
+        </textarea>
     </div>
-    <br>
+
     <button class="btn btn-lg btn-success btn-block" id="generate_button" type="button">Generate Overlay Link</button>
     <br>
     <div id="overlaylink" class="hide"></div>
