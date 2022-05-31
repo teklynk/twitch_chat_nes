@@ -50,7 +50,7 @@
     <div class="card">
         <div class="card-body">
             <h2>Twitch Chat-NES Overlay</h2>
-            <p><img src="./assets/images/screen1.png" align="right" class="img-fluid ml-3 border">This is a "Twitch Plays" overlay that allows Twitch chat to control an NES game that is running inside a OBS browser source. The overlay is connected to your Twitch chat and listens for specific chat commands like: !u, !d, !l, !r, !a, !b to control the NES game.</p>
+            <p><img src="./assets/images/screen2.png" align="right" style="width: 50%;" class="img-fluid ml-3 border">This is a "Twitch Plays" overlay that allows Twitch chat to control an NES game that is running inside a OBS browser source. The overlay is connected to your Twitch chat and listens for specific chat commands like: !u, !d, !l, !r, !a, !b to control the NES game.</p>
             <h3>Notes:</h3>
             <ul>
                 <li>Pro Tip: You can add a number to the end of a command to change how long the button is pressed. The max value is 10. This can help with some games that require the player to move across the screen or hold down the fire button. Examples: !r 4, !a 5, !d 8</li>
@@ -67,6 +67,7 @@
     <div class="form-group">
         <label for="rom">Homebrew NES Rom</label>
         <select class="form-control" id="rom">
+            <option value="3in1">3in1</option>
             <option value="chase">Chase (Pac-Man clone)</option>
             <option value="dushlan">Dushlan (Tetris clone)</option>
             <option value="invasion" selected>Invasion (Space Invaders clone)</option>
@@ -175,6 +176,7 @@
         if (mainAccount) {
             let srcURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
             let fullUrl = srcURL + "overlay.html?channel=" + mainAccount.toLowerCase() + "&size=" + size + "&rom=" + rom + "&mod-reset=" + modreset + "&mod-game=" + modgame + "&show-messages=" + showmessages;
+            fullUrl = fullUrl.replace("index.htmloverlay.html", "overlay.html");
             document.getElementById("overlaylink").classList.remove("hide");
             document.getElementById("overlaylink").innerHTML = "<p>Add this link as a browser source in OBS.<br>" +
                 "<a href='" + fullUrl + "' target='_blank'>" + fullUrl + "</a></p>";
