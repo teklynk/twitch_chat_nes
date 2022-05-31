@@ -13,9 +13,9 @@ css, html.
 
 ### Screenshots
 
-![sample1](https://github.com/teklynk/twitch_chat_nes/blob/main/screenshots/Screenshot%20from%202021-12-24%2003-08-32.png?raw=true)
+![sample1](https://github.com/teklynk/twitch_chat_nes/blob/main/screenshots/screen2.png?raw=true)
 
-![sample1](https://github.com/teklynk/twitch_chat_nes/blob/main/screenshots/Screenshot from 2022-05-30 20-43-57.png?raw=true)
+![sample1](https://github.com/teklynk/twitch_chat_nes/blob/main/screenshots/screen1.png?raw=true)
 
 ### Chat Commands
 
